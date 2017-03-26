@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/PhoneNumberText"
-        android:text="1-855-XAMARIN" />
+        android:text="1-855-XAMARIN"
+        android:fontFamily="monospace" />
     <Button
         android:text="Translate"
         android:layout_width="match_parent"
