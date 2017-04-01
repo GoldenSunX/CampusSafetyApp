@@ -23,7 +23,7 @@ namespace CampusSafetyApp
             base.OnCreate(bundle);
 
             // Create UI
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.MainPageNavigation);
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
