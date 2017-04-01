@@ -2,7 +2,7 @@
 Project for Information Security
 
 
-I. Setup (https://developer.xamarin.com/guides/android/getting_started/installation/windows/)
+I.  Setup (https://developer.xamarin.com/guides/android/getting_started/installation/windows/)
 Prepare visual studios and team foundation server with GitHub: will 
 Install Xamarin
 Familiarize yourself with the xamarin libraries 
@@ -15,7 +15,7 @@ Serves as the index for the application, we can access most of the other relevan
 Andrew
 
 Map Page
-Shows your up-to-date location and highlights areas of ongoing 
+Shows your up-to-date location and highlights areas of ongoing
 Mark
 
 Event Info Page
@@ -23,7 +23,7 @@ Shows an “FAQ” for different kinds of events that can occur and actions that
 Sam
 
 Event Alert Page
-A main page for the current event going on, a link to the map to show the radius of the event  
+A main page for the current event going on, a link to the map to show the radius of the event
 Lucas
 
 Report Event Page
