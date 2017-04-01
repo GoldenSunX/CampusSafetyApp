@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -10,6 +9,7 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Support.Design.Widget;
+using System.Collections.Generic;
 
 namespace CampusSafetyApp
 {
@@ -18,6 +18,7 @@ namespace CampusSafetyApp
     {
         DrawerLayout drawerLayout;
 
+        static List<string> eventNumbers = new List<string>();
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -38,6 +39,8 @@ namespace CampusSafetyApp
             var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.SetDrawerListener(drawerToggle);
             drawerToggle.SyncState();
+
+            Button eventHistoryButton = FindViewById<Button>(Resource.Id.nav_history);
         }
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -54,7 +57,9 @@ namespace CampusSafetyApp
                     // React on 'Friends' selection
                     break;
                 case (Resource.Id.nav_history):
-                    // React on 'Discussion' selection
+                    var intent = new Intent(this, typeof(EventHistoryActivity));
+                    intent.PutStringArrayListExtra("event_numbers", eventNumbers);
+                    StartActivity(intent);
                     break;
                 case (Resource.Id.nav_info):
                     // React on 'Discussion' selection
