@@ -1922,7 +1922,7 @@ namespace CampusSafetyApp
 			public const int contentPanel = 2131099722;
 			
 			// aapt resource value: 0x7f060079
-			public const int createEvent = 2131099769;
+			public const int create_event = 2131099769;
 			
 			// aapt resource value: 0x7f060050
 			public const int custom = 2131099728;

@@ -17,6 +17,7 @@ namespace CampusSafetyApp
     public class MainActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
+        ActionBarDrawerToggle drawerToggle;
 
         static List<string> eventNumbers = new List<string>();
         protected override void OnCreate(Bundle bundle)
@@ -34,11 +35,18 @@ namespace CampusSafetyApp
             // Attach item selected handler to navigation view
             var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            navigationView.SetCheckedItem(Resource.Id.nav_home);
 
             // Create ActionBarDrawerToggle button and add it to the toolbar
-            var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
-            drawerLayout.SetDrawerListener(drawerToggle);
+            drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
+            drawerLayout.AddDrawerListener(drawerToggle);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(true);
             drawerToggle.SyncState();
+
+            //Setup floating action button
+            FloatingActionButton actionButton = FindViewById<FloatingActionButton>(Resource.Id.create_event);
+            actionButton.Click += createEvent;
 
             Button eventHistoryButton = FindViewById<Button>(Resource.Id.nav_history);
         }
@@ -68,6 +76,17 @@ namespace CampusSafetyApp
 
             // Close drawer
             drawerLayout.CloseDrawers();
+        }
+
+        void createEvent(object sender, EventArgs e)
+        {
+            
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            drawerToggle.OnOptionsItemSelected(item);
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

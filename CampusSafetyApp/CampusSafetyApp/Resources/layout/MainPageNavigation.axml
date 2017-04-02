@@ -3,20 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    android:fitsSystemWindows="true">
-    <RelativeLayout
+    android:id="@+id/drawer_layout" 
+    android:fitsSystemWindows="true" >
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    </RelativeLayout>
+        android:layout_height="wrap_content">
+      <android.support.v7.widget.Toolbar
+              android:id="@+id/toolbar"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="?attr/actionBarSize"
+              android:background="?attr/colorPrimary"
+              android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+              app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </LinearLayout>
+    <!-- Main Content Here -->
+    <android.support.design.widget.CoordinatorLayout
+          android:id="@+id/main_content"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+      <ListView
+          android:id="@+id/lvToDoList"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+      <android.support.design.widget.FloatingActionButton
+          android:id="@+id/create_event"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom|right"
+          android:layout_margin="16dp"
+          android:src="@drawable/ic_add"
+          app:layout_anchor="@id/lvToDoList"
+          app:layout_anchorGravity="bottom|right|end" />
+    </android.support.design.widget.CoordinatorLayout>
+  </LinearLayout>
+  <!-- Navigation Here -->
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -24,22 +50,4 @@
         android:id="@+id/nav_view"
         app:menu="@menu/navmenu"
         app:headerLayout="@layout/header" />
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ListView
-            android:id="@+id/lvToDoList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/createEvent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_add"
-            app:layout_anchor="@id/lvToDoList"
-            app:layout_anchorGravity="bottom|right|end" />
-    </android.support.design.widget.CoordinatorLayout>
 </android.support.v4.widget.DrawerLayout>
