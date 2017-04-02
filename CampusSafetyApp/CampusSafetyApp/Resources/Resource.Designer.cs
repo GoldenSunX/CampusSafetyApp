@@ -89,6 +89,22 @@ namespace CampusSafetyApp
 			}
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0c0000
+			public const int androidcolors = 2131492864;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -988,32 +1004,32 @@ namespace CampusSafetyApp
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0044
-			public const int abc_background_cache_hint_selector_material_dark = 2131427396;
-			
 			// aapt resource value: 0x7f0b0045
-			public const int abc_background_cache_hint_selector_material_light = 2131427397;
+			public const int abc_background_cache_hint_selector_material_dark = 2131427397;
 			
 			// aapt resource value: 0x7f0b0046
-			public const int abc_color_highlight_material = 2131427398;
+			public const int abc_background_cache_hint_selector_material_light = 2131427398;
+			
+			// aapt resource value: 0x7f0b0047
+			public const int abc_color_highlight_material = 2131427399;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_input_method_navigation_guard = 2131427328;
 			
-			// aapt resource value: 0x7f0b0047
-			public const int abc_primary_text_disable_only_material_dark = 2131427399;
-			
 			// aapt resource value: 0x7f0b0048
-			public const int abc_primary_text_disable_only_material_light = 2131427400;
+			public const int abc_primary_text_disable_only_material_dark = 2131427400;
 			
 			// aapt resource value: 0x7f0b0049
-			public const int abc_primary_text_material_dark = 2131427401;
+			public const int abc_primary_text_disable_only_material_light = 2131427401;
 			
 			// aapt resource value: 0x7f0b004a
-			public const int abc_primary_text_material_light = 2131427402;
+			public const int abc_primary_text_material_dark = 2131427402;
 			
 			// aapt resource value: 0x7f0b004b
-			public const int abc_search_url_text = 2131427403;
+			public const int abc_primary_text_material_light = 2131427403;
+			
+			// aapt resource value: 0x7f0b004c
+			public const int abc_search_url_text = 2131427404;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int abc_search_url_text_normal = 2131427329;
@@ -1024,11 +1040,11 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f0b0003
 			public const int abc_search_url_text_selected = 2131427331;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int abc_secondary_text_material_dark = 2131427404;
-			
 			// aapt resource value: 0x7f0b004d
-			public const int abc_secondary_text_material_light = 2131427405;
+			public const int abc_secondary_text_material_dark = 2131427405;
+			
+			// aapt resource value: 0x7f0b004e
+			public const int abc_secondary_text_material_light = 2131427406;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int accent_material_dark = 2131427332;
@@ -1210,17 +1226,20 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f0b0035
 			public const int secondary_text_disabled_material_light = 2131427381;
 			
+			// aapt resource value: 0x7f0b0044
+			public const int splash_background = 2131427396;
+			
 			// aapt resource value: 0x7f0b0036
 			public const int switch_thumb_disabled_material_dark = 2131427382;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int switch_thumb_disabled_material_light = 2131427383;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int switch_thumb_material_dark = 2131427406;
-			
 			// aapt resource value: 0x7f0b004f
-			public const int switch_thumb_material_light = 2131427407;
+			public const int switch_thumb_material_dark = 2131427407;
+			
+			// aapt resource value: 0x7f0b0050
+			public const int switch_thumb_material_light = 2131427408;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int switch_thumb_normal_material_dark = 2131427384;
@@ -1812,8 +1831,14 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f02004e
 			public const int icon = 2130837582;
 			
+			// aapt resource value: 0x7f020051
+			public const int notification_template_icon_bg = 2130837585;
+			
 			// aapt resource value: 0x7f02004f
-			public const int notification_template_icon_bg = 2130837583;
+			public const int splash = 2130837583;
+			
+			// aapt resource value: 0x7f020050
+			public const int splash_screen = 2130837584;
 			
 			static Drawable()
 			{
@@ -2473,8 +2498,8 @@ namespace CampusSafetyApp
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f0c0000
-			public const int NavMenu = 2131492864;
+			// aapt resource value: 0x7f0d0000
+			public const int NavMenu = 2131558400;
 			
 			static Menu()
 			{
@@ -3024,11 +3049,14 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f090140
 			public const int Base_Widget_Design_TabLayout = 2131296576;
 			
-			// aapt resource value: 0x7f090158
-			public const int MyTheme = 2131296600;
+			// aapt resource value: 0x7f090159
+			public const int MyTheme = 2131296601;
 			
 			// aapt resource value: 0x7f090157
 			public const int MyTheme_Base = 2131296599;
+			
+			// aapt resource value: 0x7f090158
+			public const int MyTheme_Splash = 2131296600;
 			
 			// aapt resource value: 0x7f090017
 			public const int Platform_AppCompat = 2131296279;

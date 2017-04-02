@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace CampusSafetyApp
 {
-    [Activity(Label = "Campus Safety", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
