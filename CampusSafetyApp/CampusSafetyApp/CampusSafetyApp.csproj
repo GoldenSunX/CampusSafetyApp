@@ -73,8 +73,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateEventFragment.cs" />
+    <Compile Include="EventAlertFragment.cs" />
     <Compile Include="EventHistoryActivity.cs" />
+    <Compile Include="EventHistoryFragment.cs" />
+    <Compile Include="EventInfoFragment.cs" />
+    <Compile Include="HomeFragment.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MapFragment.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -92,6 +98,9 @@
     <AndroidResource Include="Resources\layout\EventMap.axml" />
     <AndroidResource Include="Resources\layout\EventReport.axml" />
     <AndroidResource Include="Resources\layout\MainPageNavigation.axml" />
+    <AndroidResource Include="Resources\layout\Home.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
