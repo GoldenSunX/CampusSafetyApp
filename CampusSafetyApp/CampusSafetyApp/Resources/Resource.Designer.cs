@@ -2087,6 +2087,9 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f060088
 			public const int nav_map = 2131099784;
 			
+			// aapt resource value: 0x7f06008b
+			public const int nav_none = 2131099787;
+			
 			// aapt resource value: 0x7f060074
 			public const int nav_view = 2131099764;
 			

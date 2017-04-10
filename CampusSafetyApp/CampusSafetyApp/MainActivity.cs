@@ -1,23 +1,22 @@
 ﻿using System;
 using Android.App;
-using Android.Content;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
-using Android.Support.V7.Widget;
 using Android.Support.Design.Widget;
 using System.Collections.Generic;
+using Android.Content;
 
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : Activity
     {
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
+        NavigationView navigatorView;
 
         static List<string> eventNumbers = new List<string>();
 
@@ -31,19 +30,19 @@ namespace CampusSafetyApp
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
+            var toolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
 
             // Attach item selected handler to navigation view
-            var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
-            navigationView.SetCheckedItem(Resource.Id.nav_home);
+            navigatorView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            navigatorView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            navigatorView.SetCheckedItem(Resource.Id.nav_home);
 
             // Create ActionBarDrawerToggle button and add it to the toolbar
-            drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
+            drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.AddDrawerListener(drawerToggle);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetDisplayShowTitleEnabled(true);
+            ActionBar.SetHomeButtonEnabled(true);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
             drawerToggle.SyncState();
 
             //Setup floating action button
@@ -62,6 +61,7 @@ namespace CampusSafetyApp
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
+
             switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.nav_home):
@@ -102,13 +102,19 @@ namespace CampusSafetyApp
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
             CreateEventFragment eventCreator = new CreateEventFragment();
             transaction.Replace(Resource.Id.fragment_container, eventCreator).Commit();
+
+            //Uncheck any navigation items
+            navigatorView.SetCheckedItem(Resource.Id.nav_none);
         }
 
+        //Enable ActionBar button for opening navigation.
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             drawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
         }
+
+
     }
 }
 
