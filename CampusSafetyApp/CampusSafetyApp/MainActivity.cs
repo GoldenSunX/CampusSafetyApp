@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define DEBUG
+using System;
 using Android.App;
 using Android.Views;
 using Android.Widget;
@@ -45,9 +46,18 @@ namespace CampusSafetyApp
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             drawerToggle.SyncState();
 
-            //Setup floating action button
-            FloatingActionButton actionButton = FindViewById<FloatingActionButton>(Resource.Id.create_event);
-            actionButton.Click += createEvent;
+            //Setup Fab menu
+            Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
+            create_menu.LongClickable = true;
+            create_menu.LongClick += create911Event;
+
+            //Setup call 911 floating action button
+            Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
+            call_911.Click += create911Event;
+
+            //Setup call 911 floating action button
+            Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
+            call_campus.Click += createCampusEvent;
 
             //Add home fragment to view
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
@@ -95,8 +105,22 @@ namespace CampusSafetyApp
             drawerLayout.CloseDrawers();
         }
 
-        //Callback for floating action button.
-        void createEvent(object sender, EventArgs e)
+        void create911Event(object sender, EventArgs e)
+        {
+            string str = "tel:911";
+#if DEBUG
+            Console.WriteLine("Calling 911");
+            str = "tel:2225552222";
+#endif
+            var uri = Android.Net.Uri.Parse(str);
+            var intent = new Intent(Intent.ActionCall, uri);
+            StartActivity(intent);
+
+            //Uncheck any navigation items
+            navigatorView.SetCheckedItem(Resource.Id.nav_none);
+        }
+
+        void createCampusEvent(object sender, EventArgs e)
         {
             Console.WriteLine("[Navigation]: Moving to Event Creator.");
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
