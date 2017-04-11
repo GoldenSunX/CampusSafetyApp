@@ -32,15 +32,24 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/create_event"
-                android:layout_width="wrap_content"
+            <com.github.clans.fab.FloatingActionMenu
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:layout_margin="16dp"
-                android:src="@drawable/ic_add"
-                app:layout_anchor="@id/fragment_container"
-                app:layout_anchorGravity="bottom|right|end" />
+                android:id="@+id/create_menu"
+                app:menu_fab_size="normal">
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/call_911"
+                    app:fab_size="mini" />
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/call_campus"
+                    app:fab_size="mini" />
+            </com.github.clans.fab.FloatingActionMenu>
         </android.support.design.widget.CoordinatorLayout>
     </LinearLayout>
 <!-- Navigation Here -->
