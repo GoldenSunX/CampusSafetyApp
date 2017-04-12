@@ -9,11 +9,14 @@ using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using System.Collections.Generic;
 using Android.Content;
+using Android.Locations;
+using Android.Runtime;
+using System.Linq;
 
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : Activity, ILocationListener
     {
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
@@ -21,10 +24,13 @@ namespace CampusSafetyApp
 
         static List<string> eventNumbers = new List<string>();
 
+        string campus_number = "";
+
         //Creates UI
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            InitializeLocationManager();
 
             // Create UI
             SetContentView(Resource.Layout.MainPageNavigation);
@@ -65,6 +71,17 @@ namespace CampusSafetyApp
             transaction.Add(Resource.Id.fragment_container, home).Commit();
 
             Button eventHistoryButton = FindViewById<Button>(Resource.Id.nav_history);
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _locationManager.RemoveUpdates(this);
         }
 
         //Callback for changing fragments when navigation options are selected.
@@ -110,7 +127,7 @@ namespace CampusSafetyApp
             string str = "tel:911";
 #if DEBUG
             Console.WriteLine("Calling 911");
-            str = "tel:2225552222";
+            str = "tel:3335552222";
 #endif
             var uri = Android.Net.Uri.Parse(str);
             var intent = new Intent(Intent.ActionCall, uri);
@@ -122,13 +139,16 @@ namespace CampusSafetyApp
 
         void createCampusEvent(object sender, EventArgs e)
         {
-            Console.WriteLine("[Navigation]: Moving to Event Creator.");
-            FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
-            CreateEventFragment eventCreator = new CreateEventFragment();
-            transaction.Replace(Resource.Id.fragment_container, eventCreator).Commit();
+            SetCampusNumber();
+            if (campus_number != string.Empty)
+            {
+                var uri = Android.Net.Uri.Parse(campus_number);
+                var intent = new Intent(Intent.ActionCall, uri);
+                StartActivity(intent);
 
-            //Uncheck any navigation items
-            navigatorView.SetCheckedItem(Resource.Id.nav_none);
+                //Uncheck any navigation items
+                navigatorView.SetCheckedItem(Resource.Id.nav_none);
+            }
         }
 
         //Enable ActionBar button for opening navigation.
@@ -138,7 +158,109 @@ namespace CampusSafetyApp
             return base.OnOptionsItemSelected(item);
         }
 
+        private void SetCampusNumber()
+        {
+            Address addr = ReverseGeocodeCurrentLocation();
+            if (_currentLocation == null)
+            {
+                campus_number = "";
+                Toast t = Toast.MakeText(this, "Location Cannot be Secured, \n Please Try Again", ToastLength.Short);
+                t.SetGravity(GravityFlags.Bottom, 0, 16);
+                t.Show();
+            }
+            else if (_currentLocation.DistanceTo(campus_center) < campus_distance)
+            {
+                campus_number = "tel:6142922121";
+#if DEBUG
+                Console.WriteLine("Calling Campus Police");
+                campus_number = "tel:3335552442";
+#endif
+            }
+            else if (addr != null && addr.Locality == "Columbus" && addr.AdminArea == "OH" && addr.CountryCode == "US")
+            {
+                campus_number = "tel:6146454545";
+#if DEBUG
+                Console.WriteLine("Calling Columbus Police");
+                campus_number = "tel:3335554224";
+#endif
+            }
+            else if (_currentLocation.DistanceTo(city_center) < city_distance)
+            {
+                campus_number = "tel:6146454545";
+#if DEBUG
+                Console.WriteLine("Calling Columbus Police");
+                campus_number = "tel:3335554224";
+#endif
+            }
+            else
+            {
+                campus_number = "";
+                Toast t = Toast.MakeText(this, "Outside Columbus", ToastLength.Short);
+                t.SetGravity(GravityFlags.Bottom, 0, 16);
+                t.Show();
+            }
+        }
 
+        /// <summary>
+        /// This is the ILocationListener Implementation and dependency functions/methods
+        /// </summary>
+        Location _currentLocation;
+        LocationManager _locationManager;
+
+        string _locationProvider;
+
+        static Location campus_center;
+        double campus_distance;
+        static Location city_center;
+        double city_distance;
+
+        public void OnLocationChanged(Location location)
+        {
+            _currentLocation = location;
+        }
+
+        public void OnProviderDisabled(string provider) { }
+
+        public void OnProviderEnabled(string provider) { }
+
+        public void OnStatusChanged(string provider, Availability status, Bundle extras) { }
+
+        void InitializeLocationManager()
+        {
+            campus_center = new Location("");
+            campus_center.Latitude = 40;
+            campus_center.Longitude = -83.0145;
+            campus_distance = 1508;
+
+            city_center = new Location("");
+            city_center.Latitude = 39.961176;
+            city_center.Longitude = -82.998794;
+            city_distance = 16000;
+
+            _locationManager = (LocationManager)GetSystemService(LocationService);
+            Criteria criteriaForLocationService = new Criteria
+            {
+                Accuracy = Accuracy.Fine
+            };
+            IList<string> acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
+
+            if (acceptableLocationProviders.Any())
+            {
+                _locationProvider = acceptableLocationProviders.First();
+            }
+            else
+            {
+                _locationProvider = string.Empty;
+            }
+            OnLocationChanged(new Location(""));
+        }
+
+        Address ReverseGeocodeCurrentLocation()
+        {
+            Geocoder geocoder = new Geocoder(this);
+            IList<Address> addressList = geocoder.GetFromLocation(_currentLocation.Latitude, _currentLocation.Longitude, 1);
+
+            return addressList.FirstOrDefault();
+        }
     }
 }
-
