@@ -30,14 +30,13 @@ namespace CampusSafetyApp
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            InitializeLocationManager();
 
             // Create UI
             SetContentView(Resource.Layout.MainPageNavigation);
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
-            var toolbar = FindViewById<Android.Widget.Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
 
             // Attach item selected handler to navigation view
@@ -74,16 +73,25 @@ namespace CampusSafetyApp
         }
         protected override void OnResume()
         {
+            
             base.OnResume();
+
+            Console.WriteLine("Resuming");
+            Console.WriteLine("[Location]: Checking for " + _locationProvider);
+
             try
             {
+                InitializeLocationManager();
                 _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
             }
             catch
             {
-                _currentLocation = null;
+                Console.WriteLine("[Location]: No Location");
+                createLocationAlert();
             }
         }
+
+
 
         protected override void OnPause()
         {
@@ -163,6 +171,27 @@ namespace CampusSafetyApp
         {
             drawerToggle.OnOptionsItemSelected(item);
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void createLocationAlert()
+        {
+            Android.App.AlertDialog.Builder builder = new Android.App.AlertDialog.Builder(this);
+            builder.SetTitle("Location not active");
+            builder.SetMessage("Your GPS seems to be disabled, do you want to enable it?").SetCancelable(false);
+            builder.SetPositiveButton("Yes", (senderAlert, AssemblyLoadEventArgs) =>
+            {
+                StartActivity(new Intent(Android.Provider.Settings.ActionLocationSourceSettings));
+            });
+            builder.SetNegativeButton("No", (senderAlert, AssemblyLoadEventArgs) =>
+            {
+
+                Toast t = Toast.MakeText(this, "Unable to get location information.", ToastLength.Short);
+                t.SetGravity(GravityFlags.Bottom, 0, 16);
+                t.Show();
+            });
+
+            Android.App.AlertDialog alert = builder.Create();
+            alert.Show();
         }
 
         private void SetCampusNumber()
