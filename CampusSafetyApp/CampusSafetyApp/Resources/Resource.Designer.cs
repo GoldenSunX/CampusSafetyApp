@@ -97,6 +97,24 @@ namespace CampusSafetyApp
 			// aapt resource value: 0x7f040015
 			public const int fab_slide_out_to_right = 2130968597;
 			
+			// aapt resource value: 0x7f040016
+			public const int hide_to_bottom = 2130968598;
+			
+			// aapt resource value: 0x7f040017
+			public const int jump_from_down = 2130968599;
+			
+			// aapt resource value: 0x7f040018
+			public const int jump_to_down = 2130968600;
+			
+			// aapt resource value: 0x7f040019
+			public const int scale_down = 2130968601;
+			
+			// aapt resource value: 0x7f04001a
+			public const int scale_up = 2130968602;
+			
+			// aapt resource value: 0x7f04001b
+			public const int show_from_bottom = 2130968603;
+			
 			static Animation()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
