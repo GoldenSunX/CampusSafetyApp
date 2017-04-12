@@ -40,6 +40,7 @@
           android:layout_gravity="bottom|right"
           android:layout_margin="16dp"
           android:id="@+id/create_menu"
+          app:menu_icon="@drawable/ic_plus"
           app:menu_animationDelayPerItem="1"
           app:menu_fab_size="normal">
         <com.github.clans.fab.FloatingActionButton
