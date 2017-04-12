@@ -19,8 +19,6 @@ namespace CampusSafetyApp
         {
             base.OnCreate(bundle);
             // Create your application here
-            var eventNumbers = Intent.Extras.GetStringArrayList("even_numbers") ?? new string[0];
-            this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, eventNumbers);
         }
     }
 }
