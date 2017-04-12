@@ -75,7 +75,14 @@ namespace CampusSafetyApp
         protected override void OnResume()
         {
             base.OnResume();
-            _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+            try
+            {
+                _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+            }
+            catch
+            {
+                _currentLocation = null;
+            }
         }
 
         protected override void OnPause()
@@ -252,15 +259,30 @@ namespace CampusSafetyApp
             {
                 _locationProvider = string.Empty;
             }
-            OnLocationChanged(new Location(""));
+            try
+            {
+                _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+            }
+            catch
+            {
+                _currentLocation = null;
+            }
         }
 
         Address ReverseGeocodeCurrentLocation()
         {
             Geocoder geocoder = new Geocoder(this);
-            IList<Address> addressList = geocoder.GetFromLocation(_currentLocation.Latitude, _currentLocation.Longitude, 1);
-
-            return addressList.FirstOrDefault();
+            Address addr;
+            try
+            {
+                IList<Address> addressList = geocoder.GetFromLocation(_currentLocation.Latitude, _currentLocation.Longitude, 1);
+                addr = addressList.FirstOrDefault();
+            }
+            catch
+            {
+                addr = null;
+            }
+            return addr;
         }
     }
 }
