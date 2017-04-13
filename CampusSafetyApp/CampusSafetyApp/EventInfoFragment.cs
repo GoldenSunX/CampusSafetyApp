@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Text;
 
 namespace CampusSafetyApp
 {
@@ -19,13 +20,17 @@ namespace CampusSafetyApp
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your fragment here
+            // Showing the text of the FAQ
+
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            return inflater.Inflate(Resource.Layout.EventFAQ, container, false);
+            var view = inflater.Inflate(Resource.Layout.EventFAQ, container, false);
+            TextView content = (TextView)view.FindViewById(Resource.String.armed_text);
+            content.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
+            return view;
         }
     }
 }

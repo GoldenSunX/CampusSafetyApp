@@ -6,9 +6,59 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="FAQ"
+        android:text="Armed Individuals"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:contenteditable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
+        android:id="@+id/armed_view" />
+    <TextView 
+        android:text="Medical Emergency"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/medical_view" />
+    <TextView 
+        android:text="Fire Emergency"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fire_view" />
+    <TextView 
+        android:text="Power Outage"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/power_view" />
+    <TextView 
+        android:text="Suspicious Activity"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sus_view" />
+    <TextView 
+        android:text="Distressed Individual"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/distressed_view" />
+    <TextView 
+        android:text="Tornado Emergency"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tornado_view" />
+    <TextView 
+        android:text="Hazardous Metrials Release"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+              android:contenteditable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hazard_view" />
 </LinearLayout>
