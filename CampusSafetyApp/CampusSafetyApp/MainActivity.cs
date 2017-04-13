@@ -53,14 +53,14 @@ namespace CampusSafetyApp
 
             //Setup Fab menu
             Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
-            create_menu.LongClickable = true;
+            create_menu.LongClickable = false;
             create_menu.LongClick += create911Event;
 
             //Setup call 911 floating action button
             Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
             call_911.Click += create911Event;
 
-            //Setup call 911 floating action button
+            //Setup call campus floating action button
             Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
             call_campus.Click += createCampusEvent;
 
