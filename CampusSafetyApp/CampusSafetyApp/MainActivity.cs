@@ -16,7 +16,7 @@ using System.Linq;
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
-    public class MainActivity : Activity, ILocationListener
+    public class MainActivity : AppCompatActivity, ILocationListener
     {
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
@@ -36,8 +36,8 @@ namespace CampusSafetyApp
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
 
             // Attach item selected handler to navigation view
             navigatorView = FindViewById<NavigationView>(Resource.Id.nav_view);
@@ -47,20 +47,20 @@ namespace CampusSafetyApp
             // Create ActionBarDrawerToggle button and add it to the toolbar
             drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, Resource.String.open_drawer, Resource.String.close_drawer);
             drawerLayout.AddDrawerListener(drawerToggle);
-            ActionBar.SetHomeButtonEnabled(true);
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             drawerToggle.SyncState();
 
             //Setup Fab menu
             Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
-            create_menu.LongClickable = true;
+            create_menu.LongClickable = false;
             create_menu.LongClick += create911Event;
 
             //Setup call 911 floating action button
             Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
             call_911.Click += create911Event;
 
-            //Setup call 911 floating action button
+            //Setup call campus floating action button
             Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
             call_campus.Click += createCampusEvent;
 
@@ -75,8 +75,6 @@ namespace CampusSafetyApp
         {
             
             base.OnResume();
-
-            Console.WriteLine("Resuming");
             Console.WriteLine("[Location]: Checking for " + _locationProvider);
 
             try
@@ -185,7 +183,7 @@ namespace CampusSafetyApp
             builder.SetNegativeButton("No", (senderAlert, AssemblyLoadEventArgs) =>
             {
 
-                Toast t = Toast.MakeText(this, "Unable to get location information.", ToastLength.Short);
+                Toast t = Toast.MakeText(this, "Unable to retrieve location.", ToastLength.Short);
                 t.SetGravity(GravityFlags.Bottom, 0, 16);
                 t.Show();
             });
@@ -200,7 +198,7 @@ namespace CampusSafetyApp
             if (_currentLocation == null)
             {
                 campus_number = "";
-                Toast t = Toast.MakeText(this, "Location Cannot be Secured, \n Please Try Again", ToastLength.Short);
+                Toast t = Toast.MakeText(this, "Unable to retrieve location.", ToastLength.Short);
                 t.SetGravity(GravityFlags.Bottom, 0, 16);
                 t.Show();
             }
