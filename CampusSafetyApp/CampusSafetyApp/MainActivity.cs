@@ -64,6 +64,10 @@ namespace CampusSafetyApp
             Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
             call_campus.Click += createCampusEvent;
 
+            //Setup register a local event floating action button
+            Clans.Fab.FloatingActionButton register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
+            register_event.Click += createLocalEvent;
+
             //Add home fragment to view
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
             HomeFragment home = new HomeFragment();
@@ -162,6 +166,11 @@ namespace CampusSafetyApp
                 //Uncheck any navigation items
                 navigatorView.SetCheckedItem(Resource.Id.nav_none);
             }
+        }
+
+        void createLocalEvent(object sender, EventArgs e)
+        {
+            EventAlertFragment.localEventOccured = true;
         }
 
         //Enable ActionBar button for opening navigation.

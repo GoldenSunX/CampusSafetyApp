@@ -22,7 +22,7 @@ namespace CampusSafetyApp
     public class EventAlertFragment : Fragment
     {
         public WebView browser;
-        private int processingCounter = 0;
+        public bool localEventOccured = false;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -40,7 +40,7 @@ namespace CampusSafetyApp
 
         public override void OnStart()
         {
-            //Note that scrolling is only possible by putting your finger in the top left corner of the
+            //Note that scrolling is only possible by putting your finger in the top half of the
             //  screen, and doing all of your scrolling there
             browser = Activity.FindViewById<WebView>(Resource.Id.webView1);
             browser.SetWebViewClient(new WebViewClient());
@@ -50,7 +50,7 @@ namespace CampusSafetyApp
             TextView active = Activity.FindViewById<TextView>(Resource.Id.active);
             inactive.TextSize = 20f;
             active.TextSize = 20f;
-            if (false)
+            if (localEventOccured)
             {
                 ((ViewGroup)inactive.Parent).RemoveView(inactive);
             } else
