@@ -260,7 +260,7 @@ namespace CampusSafetyApp
         /// <summary>
         /// This is the ILocationListener Implementation and dependency functions/methods
         /// </summary>
-        Location _currentLocation;
+        public Location _currentLocation;
         LocationManager _locationManager;
 
         string _locationProvider;
