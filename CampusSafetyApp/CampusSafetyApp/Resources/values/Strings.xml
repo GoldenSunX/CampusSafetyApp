@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="google_maps_api_key">AIzaSyBYEC9uiQDuhrYyP3eq1exTF3aCmtSQ9Kw</string>
   <string name="app_name">Campus Safety</string>
   <string name="open_drawer">Open drawer</string>
   <string name="close_drawer">Close drawer</string>
