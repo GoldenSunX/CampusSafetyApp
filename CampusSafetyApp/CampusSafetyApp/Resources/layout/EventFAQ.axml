@@ -19,4 +19,102 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/armed_text" />
+  <TextView
+        android:text="Medical Emergency"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="toggle_contents"
+        android:id="@+id/medical_head" />
+  <TextView
+       android:text="@string/medical_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/medical_text" />
+  <TextView
+      android:text="Fire"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/fire_head" />
+  <TextView
+       android:text="@string/fire_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/fire_text" />
+  <TextView
+      android:text="Power Outage"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/power_head" />
+  <TextView
+       android:text="@string/power_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/power_text" />
+  <TextView
+      android:text="Suspicious Activity"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/sus_head" />
+  <TextView
+       android:text="@string/sus_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/sus_text" />
+  <TextView
+      android:text="Distressed Individual"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/distressed_head" />
+  <TextView
+       android:text="@string/distressed_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/distressed_text" />
+  <TextView
+      android:text="Tornado "
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/tornado_head" />
+  <TextView
+       android:text="@string/tornado_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/tornado_text" />
+  <TextView
+      android:text="Hazardous Materials Release"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:clickable="true"
+      android:onClick="toggle_contents"
+      android:id="@+id/hazard_head" />
+  <TextView
+       android:text="@string/hazard_text"
+       android:textAppearance="?android:attr/textAppearanceSmall"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/hazard_text" />
 </LinearLayout>

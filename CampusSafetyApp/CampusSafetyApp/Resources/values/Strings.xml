@@ -5,7 +5,7 @@
   <string name="close_drawer">Close drawer</string>
   <string name="armed_text">
     <![CDATA[ 
-    Armed Individual\n
+\n
 - Get out, hide out, keep out\n
 - When running, leave your belongins behind and keep your hands visible\n
 - If you know where the assiliant is, consider the safest route for escape if possible\n
@@ -23,7 +23,7 @@
 
   <string name="medical_text">
     <![CDATA[
-Medical Emergency\n
+\n
 - Stay clear\n
 - If trained in first aid/CPR/autometed external defibrillator (AED) as appropriate\n
 - If not trained, stay clear of area that the emergencies \n
@@ -33,7 +33,7 @@ Medical Emergency\n
 
 <string name="fire_text">
     <![CDATA[
-Fire\n
+\n
 - Activate nearest fire alarm (if not already activated)\n
 - Proceed to the nearest exit\n
 - Use stairs and not the elevator\n
@@ -46,7 +46,7 @@ Fire\n
 
 <string name="power_text">
     <![CDATA[
-Power Outage\n
+\n
 - Secure all experiments, unplug electrical equipment, and shut off research gases\n
 - Fully close fume hoods\n
 - If people are trapped in an elevator, do not pry open elevator doors\n
@@ -56,7 +56,7 @@ Power Outage\n
 
 <string name="sus_text">
     <![CDATA[
-Suspicious Activity\n
+\n
 - Always report unusual or supicious activity to OSU Police or to your local law enforcement agency \n
 - Open locked doors for authorized persons only \n
 - Do not touch or disturb unknown or suspicious subjects \n
@@ -66,7 +66,7 @@ Suspicious Activity\n
 
 <string name="distressed_text">
     <![CDATA[
-Distressed Individual\n
+\n
 - Be aware of the location of the nearest telephone (within the building or a celluar phone)\n
 - If your are concerned for your safety, or that of others, call 911 immediately \n
 - If the individual is causing a disruption to the classroom of the office environment yet does not pose a threat:\n
@@ -74,9 +74,9 @@ Distressed Individual\n
 	- Ask the individual to leave the room\n\n]]>
 </string>
 
-<string name="tronado_text">
+<string name="tornado_text">
     <![CDATA[
-Tornado\n
+\n
 - Close all doors, including main corridors \n
 - Move to the lowest interior space of the building (windowless hallways, basement, restroom)\n
 - Crouch near floor or under heavy, well supported objects and cover the back of your head\n
@@ -87,7 +87,7 @@ Tornado\n
 
 <string name="hazard_text">
     <![CDATA[
-Hazardous Materials Release\n
+\n
 - Alert people in the immediate area of spill to evacuate \n
 - Avoid breathing vapors from spill\n
 - Unless properly trained, do not attempt to clean up the spill yourself \n
