@@ -36,6 +36,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="bottom|right"
                 android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/create_menu"
                 app:menu_icon="@drawable/ic_plus"
                 app:menu_animationDelayPerItem="1"
