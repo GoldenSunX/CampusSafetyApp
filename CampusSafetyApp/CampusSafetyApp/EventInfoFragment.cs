@@ -23,10 +23,11 @@ namespace CampusSafetyApp
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
-         //   setContentView(Resource.Layout.EventFAQ);
+            //View root = this.LayoutInflator.Inflate(Resource.Layout.EventFAQ, FragmentContainer, false);
+            //SetContentView(Resource.Layout.EventFAQ);
 
-         //   armed_text = (TextView)findViewById(Resource.Id.armed.text);
-         //   armed_text.setvisibility(OnCreateView.GONE);
+            //armed_text = (TextView) root.FindViewById(Resource.Id.armed_text);
+            //armed_text.Set
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -37,7 +38,7 @@ namespace CampusSafetyApp
         
         //public void toggle_contents(View v)
         //{
-        //    armed_text.setVisibility(armed_text.isShown() ? View.GONE: View.VISIBLE);
+            //armed_text.setVisibility(armed_text.isShown() ? View.GONE: View.VISIBLE);
         //}
     }
 }
