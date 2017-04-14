@@ -15,7 +15,8 @@
       android:title="Event Alerts" />
     <item
       android:id="@+id/nav_history"
-      android:title="Event History" />
+      android:title="Event History"
+      android:visible="false"/>
     <item
       android:id="@+id/nav_none"
       android:title=""
