@@ -13,6 +13,7 @@ using Android.Locations;
 using Android.Runtime;
 using System.Linq;
 
+
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
@@ -171,6 +172,18 @@ namespace CampusSafetyApp
         void createLocalEvent(object sender, EventArgs e)
         {
             EventAlertFragment.localEventOccured = true;
+            String title = "WARNING";
+            String subject = "Campus Safety App Notification";
+            String body = "An Emergency Has Occured In Your Area";
+            NotificationManager notif = (NotificationManager)GetSystemService(Context.NotificationService);
+            Notification.Builder notify = new Notification.Builder(this).SetSmallIcon(Resource.Drawable.icon).SetContentTitle(subject).SetContentTitle(title).SetContentText(body);
+            notif.Notify(0, notify.Build());
+
+            Address addr = ReverseGeocodeCurrentLocation();
+            if (_currentLocation != null)
+            {
+                //Report location to Map page
+            }
         }
 
         //Enable ActionBar button for opening navigation.
@@ -247,7 +260,7 @@ namespace CampusSafetyApp
         /// <summary>
         /// This is the ILocationListener Implementation and dependency functions/methods
         /// </summary>
-        Location _currentLocation;
+        public Location _currentLocation;
         LocationManager _locationManager;
 
         string _locationProvider;
