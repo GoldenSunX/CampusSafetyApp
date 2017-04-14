@@ -131,7 +131,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\EventAlert.axml" />
-    <AndroidResource Include="Resources\layout\EventFAQ.axml" />
+    <AndroidResource Include="Resources\layout\EventFAQ.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\EventHistory.axml" />
     <AndroidResource Include="Resources\layout\EventMap.axml" />
     <AndroidResource Include="Resources\layout\EventReport.axml" />
@@ -141,7 +143,9 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
