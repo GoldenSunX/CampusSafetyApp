@@ -98,9 +98,10 @@ namespace CampusSafetyApp
                 Console.WriteLine("[Location]: No Location");
                 createLocationAlert();
             }
+
+            //Make sure home gets reselected as the navigation item.
+            navigatorView.SetCheckedItem(Resource.Id.nav_home);
         }
-
-
 
         protected override void OnPause()
         {
