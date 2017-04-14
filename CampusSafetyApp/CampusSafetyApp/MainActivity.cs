@@ -131,10 +131,12 @@ namespace CampusSafetyApp
                 case (Resource.Id.nav_map):
                     Console.WriteLine("[Navigation]: Moving to Event Map.");
                     _mapActivity = new MapActivity();
+                    if (_currentLocation != null)
+                    {
+                        mapIntent.PutExtra("cur_loc_lat", _currentLocation.Latitude);
+                        mapIntent.PutExtra("cur_loc_long", _currentLocation.Longitude);
+                    }
                     
-                    
-                    //MapFragment map = new MapFragment();
-                    //transaction.Replace(Resource.Id.fragment_container, map).Commit();
                     StartActivity(mapIntent);
                     break;
                 case (Resource.Id.nav_alerts):
@@ -207,17 +209,17 @@ namespace CampusSafetyApp
                 active.Visibility = ViewStates.Visible;
             }
 
-            Address addr = ReverseGeocodeCurrentLocation();
             //Report location to Map page
             if (_currentLocation != null)
             {
-                LatLng loc = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
-                mapIntent.PutExtra("loc1", JsonConvert.SerializeObject(loc));
+                mapIntent.PutExtra("ev_loc_lat", _currentLocation.Latitude);
+                mapIntent.PutExtra("ev_loc_long", _currentLocation.Longitude);
             }
             else
             {
-                LatLng loc = new LatLng(40.002293, -83.016978);
-                mapIntent.PutExtra("loc1", JsonConvert.SerializeObject(loc));
+                //User has no location to report.
+                mapIntent.PutExtra("ev_loc_lat", 40.002293);
+                mapIntent.PutExtra("ev_loc_long", -83.016978);
             }
 
             OnClick(create_menu);

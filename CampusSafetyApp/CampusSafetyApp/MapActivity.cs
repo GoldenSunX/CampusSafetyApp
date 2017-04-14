@@ -12,7 +12,7 @@ namespace CampusSafetyApp
     [Activity(Name = "com.campussafety.Activities.MapActivity")]
     public class MapActivity : Activity, IOnMapReadyCallback
     {
-        private static readonly LatLng LatLngPoint = new LatLng(40.002286, -83.015986);
+        private static LatLng LatLngPoint = new LatLng(40.002286, -83.015986);
         public static LatLng eventLatLng;
         private GoogleMap _map;
         private MapFragment _mapFragment;
@@ -20,12 +20,18 @@ namespace CampusSafetyApp
         public void OnMapReady(GoogleMap googleMap)
         {
             _map = googleMap;
-            if (Intent.GetStringExtra("loc1") != null)
+            if (Intent.GetDoubleExtra("ev_loc_lat", 0) != 0 && Intent.GetDoubleExtra("ev_loc_long", 0) != 0)
             {
                 Console.WriteLine("User created event.");
-                var obj = JsonConvert.DeserializeObject<LatLng>(Intent.GetStringExtra("loc1"));
-                eventLatLng = new LatLng(40.002386, -83.017086);
+                eventLatLng = new LatLng(Intent.GetDoubleExtra("ev_loc_lat", 0), Intent.GetDoubleExtra("ev_loc_long", 0));
             }
+            if (Intent.GetDoubleExtra("cur_loc_lat", 0) != 0 && Intent.GetDoubleExtra("cur_loc_long", 0) != 0)
+            {
+                Console.WriteLine("Using user location.");
+                LatLngPoint.Latitude = Intent.GetDoubleExtra("cur_loc_lat", 0);
+                LatLngPoint.Longitude = Intent.GetDoubleExtra("cur_loc_long", 0);
+            }
+
             SetupMapIfNeeded();
         }
 
