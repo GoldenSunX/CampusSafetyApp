@@ -22,7 +22,7 @@ namespace CampusSafetyApp
     public class EventAlertFragment : Fragment
     {
         public WebView browser;
-        public bool localEventOccured = false;
+        public static bool localEventOccured = false;
 
         public override void OnCreate(Bundle savedInstanceState)
         {

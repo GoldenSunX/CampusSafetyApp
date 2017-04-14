@@ -13,6 +13,7 @@ using Android.Locations;
 using Android.Runtime;
 using System.Linq;
 
+
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
@@ -171,6 +172,12 @@ namespace CampusSafetyApp
         void createLocalEvent(object sender, EventArgs e)
         {
             EventAlertFragment.localEventOccured = true;
+            String title = "Campus Safety App Notification";
+            String subject = "WARNING";
+            String body = "An Emergency Has Occured In Your Area";
+            NotificationManager notif = (NotificationManager)GetSystemService(Context.NotificationService);
+            Notification.Builder notify = new Notification.Builder(this).SetSmallIcon(Resource.Drawable.icon).SetContentTitle(subject).SetContentTitle(title).SetContentText(body);
+            notif.Notify(0, notify.Build());
         }
 
         //Enable ActionBar button for opening navigation.
