@@ -22,6 +22,7 @@ namespace CampusSafetyApp
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
         NavigationView navigatorView;
+        private MapActivity _mapActivity;
 
         static List<string> eventNumbers = new List<string>();
 
@@ -116,8 +117,12 @@ namespace CampusSafetyApp
                     break;
                 case (Resource.Id.nav_map):
                     Console.WriteLine("[Navigation]: Moving to Event Map.");
-                    MapFragment map = new MapFragment();
-                    transaction.Replace(Resource.Id.fragment_container, map).Commit();
+                    _mapActivity = new MapActivity();
+                    Intent mapIntent = new Intent(this, typeof(MapActivity));
+                    
+                    //MapFragment map = new MapFragment();
+                    //transaction.Replace(Resource.Id.fragment_container, map).Commit();
+                    StartActivity(mapIntent);
                     break;
                 case (Resource.Id.nav_alerts):
                     Console.WriteLine("[Navigation]: Moving to Event Alerts.");
