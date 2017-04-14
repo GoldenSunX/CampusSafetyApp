@@ -12,7 +12,8 @@ using Android.Content;
 using Android.Locations;
 using Android.Runtime;
 using System.Linq;
-
+using Newtonsoft.Json;
+using Android.Gms.Maps.Model;
 
 namespace CampusSafetyApp
 {
@@ -22,7 +23,12 @@ namespace CampusSafetyApp
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
         NavigationView navigatorView;
+        Clans.Fab.FloatingActionMenu create_menu;
+        Clans.Fab.FloatingActionButton call_911;
+        Clans.Fab.FloatingActionButton call_campus;
+        Clans.Fab.FloatingActionButton register_event;
         private MapActivity _mapActivity;
+        Intent mapIntent;
 
         static List<string> eventNumbers = new List<string>();
 
@@ -32,6 +38,7 @@ namespace CampusSafetyApp
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            mapIntent = new Intent(this, typeof(MapActivity));
 
             // Create UI
             SetContentView(Resource.Layout.MainPageNavigation);
@@ -54,24 +61,24 @@ namespace CampusSafetyApp
             drawerToggle.SyncState();
 
             //Setup Fab menu
-            Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
+            create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
             create_menu.LongClickable = false;
             create_menu.LongClick += create911Event;
             create_menu.SetOnMenuButtonClickListener(this);
             
 
             //Setup call 911 floating action button
-            Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
+            call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
             call_911.Click += create911Event;
             call_911.Visibility = ViewStates.Gone;
 
             //Setup call campus floating action button
-            Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
+            call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
             call_campus.Click += createCampusEvent;
             call_campus.Visibility = ViewStates.Gone;
 
             //Setup register a local event floating action button
-            Clans.Fab.FloatingActionButton register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
+            register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
             register_event.Click += createLocalEvent;
             register_event.Visibility = ViewStates.Gone;
 
@@ -124,7 +131,7 @@ namespace CampusSafetyApp
                 case (Resource.Id.nav_map):
                     Console.WriteLine("[Navigation]: Moving to Event Map.");
                     _mapActivity = new MapActivity();
-                    Intent mapIntent = new Intent(this, typeof(MapActivity));
+                    
                     
                     //MapFragment map = new MapFragment();
                     //transaction.Replace(Resource.Id.fragment_container, map).Commit();
@@ -164,6 +171,7 @@ namespace CampusSafetyApp
 
             //Uncheck any navigation items
             navigatorView.SetCheckedItem(Resource.Id.nav_none);
+            OnClick(create_menu);
         }
 
         void createCampusEvent(object sender, EventArgs e)
@@ -178,6 +186,7 @@ namespace CampusSafetyApp
                 //Uncheck any navigation items
                 navigatorView.SetCheckedItem(Resource.Id.nav_none);
             }
+            OnClick(create_menu);
         }
 
         void createLocalEvent(object sender, EventArgs e)
@@ -199,10 +208,19 @@ namespace CampusSafetyApp
             }
 
             Address addr = ReverseGeocodeCurrentLocation();
+            //Report location to Map page
             if (_currentLocation != null)
             {
-                //Report location to Map page
+                LatLng loc = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
+                mapIntent.PutExtra("loc1", JsonConvert.SerializeObject(loc));
             }
+            else
+            {
+                LatLng loc = new LatLng(40.002293, -83.016978);
+                mapIntent.PutExtra("loc1", JsonConvert.SerializeObject(loc));
+            }
+
+            OnClick(create_menu);
         }
 
         //Enable ActionBar button for opening navigation.
@@ -355,10 +373,6 @@ namespace CampusSafetyApp
 
         public void OnClick(View v)
         {
-            Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
-            Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
-            Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
-            Clans.Fab.FloatingActionButton register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
             Console.WriteLine("Test");
             
             if (create_menu.IsOpened)

@@ -4,6 +4,8 @@ using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.OS;
 using Android.Widget;
+using Android.Locations;
+using Newtonsoft.Json;
 
 namespace CampusSafetyApp
 {
@@ -11,12 +13,20 @@ namespace CampusSafetyApp
     public class MapActivity : Activity, IOnMapReadyCallback
     {
         private static readonly LatLng LatLngPoint = new LatLng(40.002286, -83.015986);
+        public static LatLng eventLatLng;
         private GoogleMap _map;
         private MapFragment _mapFragment;
 
         public void OnMapReady(GoogleMap googleMap)
         {
             _map = googleMap;
+            if (Intent.GetStringExtra("loc1") != null)
+            {
+                Console.WriteLine("User created event.");
+                var obj = JsonConvert.DeserializeObject<LatLng>(Intent.GetStringExtra("loc1"));
+                eventLatLng = new LatLng(40.002386, -83.017086);
+            }
+            SetupMapIfNeeded();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -81,10 +91,20 @@ namespace CampusSafetyApp
             {
                 MarkerOptions markerOpt1 = new MarkerOptions();
                 markerOpt1.SetPosition(LatLngPoint);
-                markerOpt1.SetTitle("LatLng Point");
-                markerOpt1.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
+                markerOpt1.SetTitle("You are here!");
+                markerOpt1.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueRed));
                 _map.AddMarker(markerOpt1);
 
+                if (eventLatLng != null)
+                {
+                    Console.WriteLine("Event detected!");
+                    MarkerOptions markerOpt2 = new MarkerOptions();
+                    markerOpt2.SetPosition(eventLatLng);
+                    markerOpt2.SetTitle("DANGER: Reported event occuring here!");
+                    markerOpt2.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
+                    _map.AddMarker(markerOpt2);
+                }
+                
                 // We create an instance of CameraUpdate, and move the map to it.
                 CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(LatLngPoint, 15);
                 _map.MoveCamera(cameraUpdate);
