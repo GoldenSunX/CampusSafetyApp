@@ -184,6 +184,14 @@ namespace CampusSafetyApp
             Notification.Builder notify = new Notification.Builder(this).SetSmallIcon(Resource.Drawable.icon).SetContentTitle(subject).SetContentTitle(title).SetContentText(body);
             notif.Notify(0, notify.Build());
 
+            TextView inactive = FindViewById<TextView>(Resource.Id.inactive);
+            TextView active = FindViewById<TextView>(Resource.Id.active);
+            if (inactive != null && active != null)
+            {
+                inactive.Visibility = ViewStates.Invisible;
+                active.Visibility = ViewStates.Visible;
+            }
+
             Address addr = ReverseGeocodeCurrentLocation();
             if (_currentLocation != null)
             {

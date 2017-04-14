@@ -48,6 +48,8 @@ namespace CampusSafetyApp
 
             TextView inactive = Activity.FindViewById<TextView>(Resource.Id.inactive);
             TextView active = Activity.FindViewById<TextView>(Resource.Id.active);
+            inactive.Visibility = ViewStates.Visible;
+            active.Visibility = ViewStates.Visible;
             inactive.TextSize = 20f;
             active.TextSize = 20f;
 
@@ -55,10 +57,10 @@ namespace CampusSafetyApp
             // determined by the user themselves...)
             if (localEventOccured)
             {
-                ((ViewGroup)inactive.Parent).RemoveView(inactive);
+                inactive.Visibility = ViewStates.Invisible;
             } else
             {
-                ((ViewGroup)active.Parent).RemoveView(active);
+                active.Visibility = ViewStates.Invisible;
             }
             base.OnStart();
         }
