@@ -17,7 +17,7 @@ using System.Linq;
 namespace CampusSafetyApp
 {
     [Activity(Label = "@string/app_name", Icon = "@drawable/icon")]
-    public class MainActivity : AppCompatActivity, ILocationListener
+    public class MainActivity : AppCompatActivity, ILocationListener, View.IOnClickListener
     {
         DrawerLayout drawerLayout;
         ActionBarDrawerToggle drawerToggle;
@@ -57,18 +57,23 @@ namespace CampusSafetyApp
             Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
             create_menu.LongClickable = false;
             create_menu.LongClick += create911Event;
+            create_menu.SetOnMenuButtonClickListener(this);
+            
 
             //Setup call 911 floating action button
             Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
             call_911.Click += create911Event;
+            call_911.Visibility = ViewStates.Gone;
 
             //Setup call campus floating action button
             Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
             call_campus.Click += createCampusEvent;
+            call_campus.Visibility = ViewStates.Gone;
 
             //Setup register a local event floating action button
             Clans.Fab.FloatingActionButton register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
             register_event.Click += createLocalEvent;
+            register_event.Visibility = ViewStates.Gone;
 
             //Add home fragment to view
             FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
@@ -345,6 +350,32 @@ namespace CampusSafetyApp
                 addr = null;
             }
             return addr;
+        }
+
+        public void OnClick(View v)
+        {
+            Clans.Fab.FloatingActionMenu create_menu = FindViewById<Clans.Fab.FloatingActionMenu>(Resource.Id.create_menu);
+            Clans.Fab.FloatingActionButton call_911 = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_911);
+            Clans.Fab.FloatingActionButton call_campus = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.call_campus);
+            Clans.Fab.FloatingActionButton register_event = FindViewById<Clans.Fab.FloatingActionButton>(Resource.Id.register_event);
+            Console.WriteLine("Test");
+            
+            if (create_menu.IsOpened)
+            {
+                Console.WriteLine("Closing");
+                call_911.Visibility = ViewStates.Gone;
+                call_campus.Visibility = ViewStates.Gone;
+                register_event.Visibility = ViewStates.Gone;
+                create_menu.Close(true);
+            }
+            else
+            {
+                Console.WriteLine("Opening");
+                call_911.Visibility = ViewStates.Visible;
+                call_campus.Visibility = ViewStates.Visible;
+                register_event.Visibility = ViewStates.Visible;
+                create_menu.Open(true);
+            }
         }
     }
 }
