@@ -23,7 +23,7 @@ namespace CampusSafetyApp
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MapLayout);
-
+            
             InitMapFragment();
 
             SetupAnimateToButton();
@@ -51,6 +51,7 @@ namespace CampusSafetyApp
                 _mapFragment = MapFragment.NewInstance(mapOptions);
                 fragTx.Add(Resource.Id.map, _mapFragment, "map");
                 fragTx.Commit();
+                _mapFragment.GetMapAsync(this);
             }
 
         }
