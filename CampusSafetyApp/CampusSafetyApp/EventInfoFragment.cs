@@ -12,25 +12,32 @@ using Android.Views;
 using Android.Widget;
 using Android.Text;
 
+
 namespace CampusSafetyApp
 {
     public class EventInfoFragment : Fragment
     {
+        TextView armed_text;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Showing the text of the FAQ
+            // Create your fragment here
+         //   setContentView(Resource.Layout.EventFAQ);
 
+         //   armed_text = (TextView)findViewById(Resource.Id.armed.text);
+         //   armed_text.setvisibility(OnCreateView.GONE);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            var view = inflater.Inflate(Resource.Layout.EventFAQ, container, false);
-            TextView content = (TextView)view.FindViewById(Resource.String.armed_text);
-            content.MovementMethod = new Android.Text.Method.ScrollingMovementMethod();
-            return view;
+            return inflater.Inflate(Resource.Layout.EventFAQ, container, false);
         }
+        
+        //public void toggle_contents(View v)
+        //{
+        //    armed_text.setVisibility(armed_text.isShown() ? View.GONE: View.VISIBLE);
+        //}
     }
 }

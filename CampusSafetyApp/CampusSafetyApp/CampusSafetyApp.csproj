@@ -240,9 +240,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_plus.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_clear_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_plus.png" />
   </ItemGroup>
   <ItemGroup>

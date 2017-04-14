@@ -5,94 +5,94 @@
   <string name="close_drawer">Close drawer</string>
   <string name="armed_text">
     <![CDATA[ 
-    Armed Individual<br />
-- Get out, hide out, keep out<br />
-- When running, leave your belongins behind and keep your hands visible<br />
-- If you know where the assiliant is, consider the safest route for escape if possible<br />
-- If its usafe to escape:<br />
-	- Immediately seek protection<br />
-	- Secure area by locking/barricading doors using whatever available<br />
-	- If someone has a belt, use it to help barricade double doors by wrapping it around the door knobs<br />
-	- Stay behind solid objects away from door<br />
-	- Do not hundle in a group since it makes an easier target<br />
-	- Minimize noise that may draw attention to the room; turn off lights and machines and silence phones<br />
-	- Obey the directions of law enforcement who are handling the situation<br />
-	- Fight only as a very last resort, try and incapacitate the shooter<br />
-	- Use an object as a weapon like a chair <br /><br />]]>
+    Armed Individual\n
+- Get out, hide out, keep out\n
+- When running, leave your belongins behind and keep your hands visible\n
+- If you know where the assiliant is, consider the safest route for escape if possible\n
+- If its usafe to escape:\n
+	- Immediately seek protection\n
+	- Secure area by locking/barricading doors using whatever available\n
+	- If someone has a belt, use it to help barricade double doors by wrapping it around the door knobs\n
+	- Stay behind solid objects away from door\n
+	- Do not hundle in a group since it makes an easier target\n
+	- Minimize noise that may draw attention to the room; turn off lights and machines and silence phones\n
+	- Obey the directions of law enforcement who are handling the situation\n
+	- Fight only as a very last resort, try and incapacitate the shooter\n
+	- Use an object as a weapon like a chair \n\n]]>
   </string>
 
   <string name="medical_text">
     <![CDATA[
-Medical Emergency<br />
-- Stay clear<br />
-- If trained in first aid/CPR/autometed external defibrillator (AED) as appropriate<br />
-- If not trained, stay clear of area that the emergencies <br />
-- Help direct first respoinders to incident location<br />
-- Re-enter only when directed to by authorities<br /><br />]]>
+Medical Emergency\n
+- Stay clear\n
+- If trained in first aid/CPR/autometed external defibrillator (AED) as appropriate\n
+- If not trained, stay clear of area that the emergencies \n
+- Help direct first respoinders to incident location\n
+- Re-enter only when directed to by authorities\n\n]]>
 </string>
 
 <string name="fire_text">
     <![CDATA[
-Fire<br />
-- Activate nearest fire alarm (if not already activated)<br />
-- Proceed to the nearest exit<br />
-- Use stairs and not the elevator<br />
-- Assist persons with disabilities<br />
-- Meet at designated assembly areas<br />
-- Stay away from building entrances <br />
-- Account for individuals<br />
-- Re-enter only when directed by authorities<br /><br />]]>
+Fire\n
+- Activate nearest fire alarm (if not already activated)\n
+- Proceed to the nearest exit\n
+- Use stairs and not the elevator\n
+- Assist persons with disabilities\n
+- Meet at designated assembly areas\n
+- Stay away from building entrances \n
+- Account for individuals\n
+- Re-enter only when directed by authorities\n\n]]>
 </string>
 
 <string name="power_text">
     <![CDATA[
-Power Outage<br />
-- Secure all experiments, unplug electrical equipment, and shut off research gases<br />
-- Fully close fume hoods<br />
-- If people are trapped in an elevator, do not pry open elevator doors<br />
-- Isolate hazardous areas to prevent harm and/or evacuate buidling as appropriate <br />
-- Re-enter area only when directed by authorities <br /><br />]]>
+Power Outage\n
+- Secure all experiments, unplug electrical equipment, and shut off research gases\n
+- Fully close fume hoods\n
+- If people are trapped in an elevator, do not pry open elevator doors\n
+- Isolate hazardous areas to prevent harm and/or evacuate buidling as appropriate \n
+- Re-enter area only when directed by authorities \n\n]]>
 </string>
 
 <string name="sus_text">
     <![CDATA[
-Suspicious Activity<br />
-- Always report unusual or supicious activity to OSU Police or to your local law enforcement agency <br />
-- Open locked doors for authorized persons only <br />
-- Do not touch or disturb unknown or suspicious subjects <br />
-- Secure you belongings and assets<br />
-- Re-enter area only when directed by authorities <br /><br />]]>
+Suspicious Activity\n
+- Always report unusual or supicious activity to OSU Police or to your local law enforcement agency \n
+- Open locked doors for authorized persons only \n
+- Do not touch or disturb unknown or suspicious subjects \n
+- Secure you belongings and assets\n
+- Re-enter area only when directed by authorities \n\n]]>
 </string>
 
 <string name="distressed_text">
     <![CDATA[
-Distressed Individual<br />
-- Be aware of the location of the nearest telephone (within the building or a celluar phone)<br />
-- If your are concerned for your safety, or that of others, call 911 immediately <br />
-- If the individual is causing a disruption to the classroom of the office environment yet does not pose a threat:<br />
-	- Discuss the situation with the person to address inappropriate behaviour<br />
-	- Ask the individual to leave the room<br /><br />]]>
+Distressed Individual\n
+- Be aware of the location of the nearest telephone (within the building or a celluar phone)\n
+- If your are concerned for your safety, or that of others, call 911 immediately \n
+- If the individual is causing a disruption to the classroom of the office environment yet does not pose a threat:\n
+	- Discuss the situation with the person to address inappropriate behaviour\n
+	- Ask the individual to leave the room\n\n]]>
 </string>
 
 <string name="tronado_text">
     <![CDATA[
-Tornado<br />
-- Close all doors, including main corridors <br />
-- Move to the lowest interior space of the building (windowless hallways, basement, restroom)<br />
-- Crouch near floor or under heavy, well supported objects and cover the back of your head<br />
-- If outdoors and there is no time to move into an ionterior sapace lie flat in nearest depression (ditch, ravine) and cover back of your head <br />
-- Tune to local radio or TV<br />
-- Resgister for severe weather alerts at go.osu.edu/weatheralert<br /><br />]]>
+Tornado\n
+- Close all doors, including main corridors \n
+- Move to the lowest interior space of the building (windowless hallways, basement, restroom)\n
+- Crouch near floor or under heavy, well supported objects and cover the back of your head\n
+- If outdoors and there is no time to move into an ionterior sapace lie flat in nearest depression (ditch, ravine) and cover back of your head \n
+- Tune to local radio or TV\n
+- Resgister for severe weather alerts at go.osu.edu/weatheralert\n\n]]>
 </string>
 
 <string name="hazard_text">
     <![CDATA[
-Hazardous Materials Release<br />
-- Alert people in the immediate area of spill to evacuate <br />
-- Avoid breathing vapors from spill<br />
-- Unless properly trained, do not attempt to clean up the spill yourself <br />
-- If personally contaminated, seek eye wash and/or emergency shower<br />
-- Do not operate any electrical devices, phones (including celluar devices), appliances, light switches, or equipment with open flames within spill area<br />
+Hazardous Materials Release\n
+- Alert people in the immediate area of spill to evacuate \n
+- Avoid breathing vapors from spill\n
+- Unless properly trained, do not attempt to clean up the spill yourself \n
+- If personally contaminated, seek eye wash and/or emergency shower\n
+- Do not operate any electrical devices, phones (including celluar devices), appliances, light switches, or equipment with open flames within spill area\n
 - Re-enter area only when directed by authorities ]]>
   </string>
 </resources>
