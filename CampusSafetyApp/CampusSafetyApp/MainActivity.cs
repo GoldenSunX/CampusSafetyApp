@@ -172,12 +172,18 @@ namespace CampusSafetyApp
         void createLocalEvent(object sender, EventArgs e)
         {
             EventAlertFragment.localEventOccured = true;
-            String title = "Campus Safety App Notification";
-            String subject = "WARNING";
+            String title = "WARNING";
+            String subject = "Campus Safety App Notification";
             String body = "An Emergency Has Occured In Your Area";
             NotificationManager notif = (NotificationManager)GetSystemService(Context.NotificationService);
             Notification.Builder notify = new Notification.Builder(this).SetSmallIcon(Resource.Drawable.icon).SetContentTitle(subject).SetContentTitle(title).SetContentText(body);
             notif.Notify(0, notify.Build());
+
+            Address addr = ReverseGeocodeCurrentLocation();
+            if (_currentLocation != null)
+            {
+                //Report location to Map page
+            }
         }
 
         //Enable ActionBar button for opening navigation.

@@ -50,6 +50,9 @@ namespace CampusSafetyApp
             TextView active = Activity.FindViewById<TextView>(Resource.Id.active);
             inactive.TextSize = 20f;
             active.TextSize = 20f;
+
+            //Display on the screen whether or not an event has occrued in the local area (as
+            // determined by the user themselves...)
             if (localEventOccured)
             {
                 ((ViewGroup)inactive.Parent).RemoveView(inactive);
